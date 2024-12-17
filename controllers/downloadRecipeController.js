@@ -31,3 +31,28 @@ exports.addToDownloadRecipeController = async(req,res)=>{
     
     
 }
+
+//get user download recipe
+exports.getUserDownloadListController = async(req,res)=>{
+    console.log("Inside getUserDownloadListController");
+    const userId = req.userId
+    try{
+        const allUserDownloads = await downloadRecipes.find({userId})
+        res.status(200).json(allUserDownloads)
+    }catch(err){
+        res.status(401).json(err)
+    }
+    
+}
+
+//get all download recipe
+exports.getAllDownloadListController = async(req,res)=>{
+    console.log("Inside getAllDownloadListController");
+    try{
+        const allDownloads = await downloadRecipes.find()
+        res.status(200).json(allDownloads)
+    }catch(err){
+        res.status(401).json(err)
+    }
+    
+}

@@ -32,8 +32,40 @@ router.post('/recipe/:id/download',jwtMiddleware,downloadRecipeController.addToD
 //save recipe
 router.post('/recipe/:id/save',jwtMiddleware,saveRecipeController.addToSaveRecipeController)
 
+//get usersave recipe
+router.get('/get-save-recipes',jwtMiddleware,saveRecipeController.getUserSavedRecipeController)
 
+//remove saved Recipe
+router.delete('/save-recipes/:id/remove',jwtMiddleware,saveRecipeController.removeRecipeController)
 
+//get user download recipe
+router.get('/user-downloads',jwtMiddleware,downloadRecipeController.getUserDownloadListController)
 
+//edit-user
+router.post('/user/edit',jwtMiddleware,userController.editUserController)
+
+//all-user
+router.get('/all-users',jwtMiddleware,userController.getAllUsersController)
+
+//all-download
+router.get('/all-download',jwtMiddleware,downloadRecipeController.getAllDownloadListController)
+
+//all-feedbacks
+router.get('/all-feedbacks',jwtMiddleware,testimonyController.getAllFeedbackController)
+
+//update-testimony
+router.get('/feedbacks/:id/update',jwtMiddleware,testimonyController.updateFeedbackStatusController)
+
+//all-Approved-feedbacks
+router.get('/all-approved-feedbacks',testimonyController.getAllApprovedFeedbackController)
+
+//addRecipe
+router.post('/add-recipe',jwtMiddleware,recipeController.addRecipeController)
+
+//edit Recipe
+router.put('/recipe/:id/edit',jwtMiddleware,recipeController.updateRecipeController)
+
+//remove Recipe
+router.delete('/recipe/:id/remove',jwtMiddleware,recipeController.removeRecipeController)
 
 module.exports = router
